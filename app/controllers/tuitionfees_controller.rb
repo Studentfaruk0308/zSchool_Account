@@ -10,7 +10,7 @@ class TuitionfeesController < ApplicationController
   
     def create
         @tuitionfee = Tuitionfee.create(tuitionfee_params)
-        redirect_to tuitionfee_path(@tuitionfee_class)
+        redirect_to tuitionfee_path(@tuitionfee)
     end
   
     def show
@@ -28,9 +28,9 @@ class TuitionfeesController < ApplicationController
         redirect_to tuitionfee_path(@tuitionfee_class)
     end
   
-      private
+    private
   
     def tuitionfee_params
-        params.require(:tuitionfee_code, :term_1_fee, :term_2_fee, :term_3_fee, :term_4_fee, :full_year_fee).permit!
+        params.require(:tuitionfee).permit(:tuitionfee_code, :term_1_fee, :term_2_fee, :term_3_fee, :term_4_fee, :full_year_fee)
     end
 end
