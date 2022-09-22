@@ -9,8 +9,12 @@ class TuitionfeesController < ApplicationController
     end
   
     def create
-        @tuitionfee = Tuitionfee.create(tuitionfee_params)
+        @tuitionfee = Tuitionfee.new(tuitionfee_params)
+        if @tuitionfee.save
         redirect_to tuitionfee_path(@tuitionfee)
+       else
+        render :new
+       end
     end
   
     def show
@@ -24,8 +28,16 @@ class TuitionfeesController < ApplicationController
   
     def update
         @tuitionfee = Tuitionfee.find(params[:id])
-        @tuitionfee.update(tuitionfee_params)
-        redirect_to tuitionfee_path(@tuitionfee_class)
+        if @tuitionfee.update(tuitionfee_params)
+        redirect_to tuitionfee_path(@tuitionfee)
+        else
+            render :edit
+        end
+    end
+
+    def destroy
+        Tuitionfee.find(params[:id]).destroy
+        redirect_to action: "index"
     end
   
     private

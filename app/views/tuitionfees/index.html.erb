@@ -1,10 +1,7 @@
-<div class='main'>
-  <div class='title'>
-    <h1>All Tuition Fees</h1>
-  </div>
+  <h1 class="center">All Tuition Fees</h1>
 
-  <div class='main-left tableFixHead'>
-    <table>
+  <div class='main-centre tableFixHead'>
+    <table class="center">
       <thead>
         <tr>
             <th>TUITION_FEE_ID</th>
@@ -13,7 +10,8 @@
             <th>TERM_2_FEE</th>
             <th>TERM_3_FEE</th>
             <th>TERM_4_FEE</th>
-            <th>TERM_3_Fee</th>      
+            <th>FEE FOR FULL YEAR</th>
+            <th>DETAILS/UPDATE/DELETE</th>
         </tr>
       </thead>
       <tbody>
@@ -26,14 +24,18 @@
             <td><%= fee.term_3_fee %></td>
             <td><%= fee.term_4_fee %></td>
             <td><%= fee.full_year_fee %></td>
+            <td><%= link_to "DETAILS/UPDATE/DELETE", tuitionfees_path(@tuitionfee) %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
   </div>
-
-  <div class='main-right'>
-    <b><%= link_to "+ Create New Tuition Fee", new_tuitionfee_path %></b>
-  </div>
-</div>
-
+<br>
+<br>
+<table class="center">
+      <thead>
+        <tr>
+          <th><%= link_to "+ Create New Tuition Fee", new_tuitionfee_path %></th>
+        </tr>
+      </thead>
+</table>
